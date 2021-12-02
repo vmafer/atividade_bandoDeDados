@@ -1,0 +1,18 @@
+{
+    "Cliente": {
+        "CPF": "Number",
+        "Nome": "String",
+        "Endereço": "Sring",
+        "Contato": "Number",
+        "Data do Extrato": "Number"
+    },
+    
+    "Extrato": {
+        "Nome da Instituição": "String",
+        "Agencia": "Number",
+        "Conta": "Number",
+        "Valor gasto": "Number",
+        "Numero de Itens": "Number",
+        "Saldo em Conta": "Number"
+    }
+}
