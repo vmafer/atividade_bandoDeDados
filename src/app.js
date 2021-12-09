@@ -11,15 +11,16 @@ mongoose.connect("mongodb://localhost:27017/senac", {
 
 let db = mongoose.connection;
 
-db.one("error", console.log.bind(console,"connection error:"))
+db.on("error", console.log.bind(console,"connection error:"))
 db.once("open", function(){
     console.log("conexao feita com sucesso")
 })
 
 const index = require("./routes/index")
-const tarefas = require("./routes/tarefasRoutes")
+const tarefas = require("./routes/tarefasRoute")
 
-app.use(bodyParser.json());
+app.use(express.json());
+//app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")
@@ -29,10 +30,11 @@ app.use(function(req, res, next) {
         next()
 })
 
-app.use("/",index)
-app.use("/tarefas",tarefas)
+app.use("/", index)
+app.use("/tarefas", tarefas)
 
 module.exports = app
+
 
 
 

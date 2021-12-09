@@ -1,4 +1,4 @@
-const tarefas = require('../modelstarefas');
+const tarefas = require('../models/tarefas');
 
 const getAll = (req,res) => {
     console.log(req.url);
@@ -10,6 +10,22 @@ const getAll = (req,res) => {
     })
 };
 
-module.exports ={
+const postTarefa = (req,res) => {
+    console.log(req.body)
+    
+    let tarefa = new tarefas(req.body)
+
+    tarefa.save(function(err){
+        if(err){
+            res.status(500).send({ message: err.message })
+        }
+        res.status(201).send(tarefa.toJSON())
+    })
+};
+
+module.exports = {
+    postTarefa,
     getAll
-}
+    
+
+};
